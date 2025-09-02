@@ -21,9 +21,13 @@ import net.minecraft.world.entity.monster.Blaze;
 import net.minecraft.world.entity.monster.CaveSpider;
 import net.minecraft.world.entity.monster.Drowned;
 import net.minecraft.world.entity.monster.Guardian;
+import net.minecraft.world.entity.monster.Skeleton;
+import net.minecraft.world.entity.monster.Creeper;
+import net.minecraft.world.entity.animal.Warden;
 import net.minecraft.world.entity.monster.Slime;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.AxeItem;
+import net.minecraft.world.item.StickItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
@@ -33,24 +37,31 @@ public class DeathKnellCommon {
     private static final TagKey<Item> COOKIES = bind("cookies");
     private static final TagKey<Item> BOOKS = bind("books");
     private static final TagKey<Item> AXES = bind("axes");
+    private static final TagKey<Item> STICKS = bind("sticks");
+    private static final TagKey<Item> ARROWS = bind("arrows");
 
     // Messages
-    private static final IDeathMessage GENERIC_SLAIN = new DeathMessageRandom("thwarted", "bonked", "defeated", "butchered", "assassinate", "eliminated", "extinguished", "terminated", "done_in", "executed", "stopped", "stifle", "slaughter", "exterminated", "vanquished", "bested", "trounced", "ended", "perished", "demise");
+    private static final IDeathMessage GENERIC_SLAIN = new DeathMessageRandom("thwarted", "bonked", "defeated", "butchered", "assassinate", "eliminated", "extinguished", "terminated", "done_in", "executed", "stopped", "stifle", "slaughter", "exterminated", "vanquished", "bested", "trounced", "ended", "perished", "demise", "lobby", "just_delete", "slimed");
     private static final IDeathMessage DEATH_BY_COOKIE = new DeathMessage("death_by_cookie");
     private static final IDeathMessage DEATH_BY_BOOK = new DeathMessage("death_by_book");
     private static final IDeathMessage DEATH_BY_AXE = new DeathMessage("death_by_axe");
-    private static final IDeathMessage BURNED_ALIVE = new DeathMessageRandom("incinerated", "reduce_to_ash", "cooked_alive", "fire_out");
-    private static final IDeathMessage SPIDER_VENOM = new DeathMessage("spider_venom");
-    private static final IDeathMessage SLIME_DEATH = new DeathMessageRandom("dissolve", "slime_food");
-    private static final IDeathMessage POLAR_BEAR_DEATH = new DeathMessageRandom("respect_habitat", "disturb_den");
-    private static final IDeathMessage IRON_GOLEM_DEATH = new DeathMessage("saved_from_village");
-    private static final IDeathMessage DROWNED_DEATH = new DeathMessage("watery_grave");
-    private static final IDeathMessage GUARDIAN_DEATH = new DeathMessage("stared_down");
-    private static final IDeathMessage PLAYER_DEATH = new DeathMessage("pwned");
-    private static final IDeathMessage FALL_DEATH = new DeathMessageRandom("fall_bounce", "fall_gravity", "fall_parachute", "fall_stub", "free_fall");
-    private static final IDeathMessage DROWN_DEATH = new DeathMessageRandom("drown_breath", "drown_fishes", "drown_fish_food", "drown_shark_bait", "drown_floundered");
-    private static final IDeathMessage ELYTRA_WALL_DEATH = new DeathMessageRandom("elytra_wall_bang", "elytra_wall_crash");
-    private static final IDeathMessage VOID_DEATH = new DeathMessageRandom("void_abyss", "void_infinity", "void_divide");
+    private static final IDeathMessage DEATH_BY_STICK = new DeathMessage("death_by_stick");
+    private static final IDeathMessage DEATH_BY_ARROW = new DeathMessage("death_by_arrow", "stando_power", "baseball");
+    private static final IDeathMessage BURNED_ALIVE = new DeathMessageRandom("incinerated", "reduce_to_ash", "cooked_alive", "fire_out", "flame_on");
+    private static final IDeathMessage SPIDER_VENOM = new DeathMessage("spider_venom", "spiderman");
+    private static final IDeathMessage SLIME_DEATH = new DeathMessageRandom("dissolve", "slime_food", "slimed");
+    private static final IDeathMessage POLAR_BEAR_DEATH = new DeathMessageRandom("respect_habitat", "disturb_den", "chose");
+    private static final IDeathMessage SKELETON_DEATH = new DeathMessageRandom("death_by_arrow", "stando_power", "baseball");
+    private static final IDeathMessage IRON_GOLEM_DEATH = new DeathMessage("saved_from_village", "dad_one", "belt");
+    private static final IDeathMessage DROWNED_DEATH = new DeathMessage("watery_grave", "drown_locker");
+    private static final IDeathMessage CREEPER_DEATH = new DeathMessage("creeper", "al");
+    private static final IDeathMessage GUARDIAN_DEATH = new DeathMessage("stared_down", "drown_locker");
+    private static final IDeathMessage WARDEN_DEATH = new DeathMessage("snake", "dad_two");
+    private static final IDeathMessage PLAYER_DEATH = new DeathMessage("pwned", "butt", "just_delete", "lobby", "eliminated", "assassinate", "executed", "ended", "demise", "slimed");
+    private static final IDeathMessage FALL_DEATH = new DeathMessageRandom("fall_bounce", "fall_gravity", "fall_parachute", "fall_stub", "free_fall", "fall_git_gud", "fall_delete_game", "fall_halfway_down", "fall_defy", "life_alert", "hunid_fifty_thousand", "fall_splat", "fall_flip");
+    private static final IDeathMessage DROWN_DEATH = new DeathMessageRandom("drown_breath", "drown_fishes", "drown_fish_food", "drown_shark_bait", "drown_floundered", "drown_mario", "down_with_ship");
+    private static final IDeathMessage ELYTRA_WALL_DEATH = new DeathMessageRandom("elytra_wall_bang", "elytra_wall_crash", "elytra_wall_boom");
+    private static final IDeathMessage VOID_DEATH = new DeathMessageRandom("void_abyss", "void_infinity", "void_divide", "void_door", "void_floating");
 
 
     private static CombatEntry getLastCombatEntry(AccessorCombatTracker tracker) {
@@ -71,24 +82,24 @@ public class DeathKnellCommon {
 
                 if (source != null) {
 
-                    if (source.is(DamageTypeTags.IS_FALL) && tryPercent(0.6f)) {
+                    if (source.is(DamageTypeTags.IS_FALL) && tryPercent(0.7f)) {
 
                         return FALL_DEATH.getMessage(deadMob);
                     }
 
-                    if (source.is(DamageTypeTags.IS_DROWNING) && tryPercent(0.6f)) {
+                    if (source.is(DamageTypeTags.IS_DROWNING) && tryPercent(0.7f)) {
 
                         return DROWN_DEATH.getMessage(deadMob);
                     }
 
                     //There is no actual DamageTypeTag for the elytra flying into a wall, but this still works
-                    if (source.is(DamageTypes.FLY_INTO_WALL) && tryPercent(0.6f)) {
+                    if (source.is(DamageTypes.FLY_INTO_WALL) && tryPercent(0.7f)) {
 
                         return ELYTRA_WALL_DEATH.getMessage(deadMob);
                     }
 
                     //Void death messages. The ALWAYS_MOST_SIGNIFICANT_FALL tag only has the void damage type applied
-                    if (source.is(DamageTypeTags.ALWAYS_MOST_SIGNIFICANT_FALL) && tryPercent(0.6f)) {
+                    if (source.is(DamageTypeTags.ALWAYS_MOST_SIGNIFICANT_FALL) && tryPercent(0.7f)) {
 
                         return VOID_DEATH.getMessage(deadMob);
                     }
@@ -134,9 +145,22 @@ public class DeathKnellCommon {
                     return DROWNED_DEATH.getMessage(deadMob, killer);
                 }
 
+                if (killer instanceof Skeleton && tryPercent(0.40f)) {
+
+                    return SKELETON_DEATH.getMessage(deadMob, killer);
+                }
+                if (killer instanceof Creeper && tryPercent(0.40f)) {
+
+                    return CREEPER_DEATH.getMessage(deadMob, killer);
+                }
                 if (killer instanceof Guardian && tryPercent(0.40f)) {
 
                     return GUARDIAN_DEATH.getMessage(deadMob, killer);
+                }
+                
+                 if (killer instanceof Warden && tryPercent(0.40f)) {
+
+                    return WARDEN_DEATH.getMessage(deadMob, killer);
                 }
 
                 if (killer instanceof Player && tryPercent(0.2f)) {
@@ -162,6 +186,13 @@ public class DeathKnellCommon {
 
                         return DEATH_BY_AXE.getMessage(deadMob, killer);
                     }
+
+                    else if (murderWeapon.getItem() instanceof StickItem || murderWeapon.is(STICKS)) {
+
+                        return DEATH_BY_STICK.getMessage(deadMob, killer);
+                    }
+
+
 
                     // 85% chance to replace vanilla generic death messages
                     else if (tryPercent(0.85f)) {
