@@ -69,7 +69,7 @@ public class DeathKnellCommon {
     private static final IDeathMessage FALL_DEATH = new DeathMessageRandom("fall_bounce", "fall_gravity", "fall_parachute", "fall_stub", "free_fall", "fall_git_gud", "fall_delete_game", "fall_halfway_down", "fall_defy", "life_alert", "hunid_fifty_thousand", "fall_splat", "fall_flip");
     private static final IDeathMessage DROWN_DEATH = new DeathMessageRandom("drown_breath", "drown_fishes", "drown_fish_food", "drown_shark_bait", "drown_floundered", "drown_mario", "down_with_ship");
     private static final IDeathMessage ELYTRA_WALL_DEATH = new DeathMessageRandom("elytra_wall_bang", "elytra_wall_crash", "elytra_wall_boom");
-    private static final IDeathMessage VOID_DEATH = new DeathMessageRandom("void_abyss", "void_infinity", "void_divide", "void_door", "void_floating");
+    private static final IDeathMessage VOID_DEATH = new DeathMessageRandom("void_abyss", "void_infinity", "void_divide", "void_door", "void_floating", "void_noclip");
 
 
     private static CombatEntry getLastCombatEntry(AccessorCombatTracker tracker) {
