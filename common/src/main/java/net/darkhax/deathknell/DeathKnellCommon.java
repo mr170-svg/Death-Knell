@@ -21,8 +21,12 @@ import net.minecraft.world.entity.monster.Blaze;
 import net.minecraft.world.entity.monster.CaveSpider;
 import net.minecraft.world.entity.monster.Drowned;
 import net.minecraft.world.entity.monster.Guardian;
+import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.monster.Skeleton;
 import net.minecraft.world.entity.monster.Creeper;
+import net.minecraft.world.entity.monster.Enderman;
+import net.minecraft.world.entity.monster.EnderDragon;
+import net.minecraft.world.entity.monster.Wither;
 import net.minecraft.world.entity.animal.Warden;
 import net.minecraft.world.entity.monster.Slime;
 import net.minecraft.world.entity.player.Player;
@@ -41,22 +45,26 @@ public class DeathKnellCommon {
     private static final TagKey<Item> ARROWS = bind("arrows");
 
     // Messages
-    private static final IDeathMessage GENERIC_SLAIN = new DeathMessageRandom("thwarted", "bonked", "defeated", "butchered", "assassinate", "eliminated", "extinguished", "terminated", "done_in", "executed", "stopped", "stifle", "slaughter", "exterminated", "vanquished", "bested", "trounced", "ended", "perished", "demise", "lobby", "just_delete", "slimed");
-    private static final IDeathMessage DEATH_BY_COOKIE = new DeathMessage("death_by_cookie");
-    private static final IDeathMessage DEATH_BY_BOOK = new DeathMessage("death_by_book");
-    private static final IDeathMessage DEATH_BY_AXE = new DeathMessage("death_by_axe");
+    private static final IDeathMessage GENERIC_SLAIN = new DeathMessageRandom("thwarted", "bonked", "defeated", "butchered", "assassinate", "eliminated", "extinguished", "terminated", "done_in", "executed", "stopped", "stifle", "slaughter", "exterminated", "vanquished", "bested", "trounced", "ended", "perished", "demise", "lobby", "just_delete", "slimed", "butt");
+    private static final IDeathMessage DEATH_BY_COOKIE = new DeathMessage("death_by_cookie", "diabeetus");
+    private static final IDeathMessage DEATH_BY_BOOK = new DeathMessage("death_by_book", "death_by_boredom");
+    private static final IDeathMessage DEATH_BY_AXE = new DeathMessage("death_by_axe", "johnny");
     private static final IDeathMessage DEATH_BY_STICK = new DeathMessage("death_by_stick");
     private static final IDeathMessage DEATH_BY_ARROW = new DeathMessage("death_by_arrow", "stando_power", "baseball");
     private static final IDeathMessage BURNED_ALIVE = new DeathMessageRandom("incinerated", "reduce_to_ash", "cooked_alive", "fire_out", "flame_on");
     private static final IDeathMessage SPIDER_VENOM = new DeathMessage("spider_venom", "spiderman");
     private static final IDeathMessage SLIME_DEATH = new DeathMessageRandom("dissolve", "slime_food", "slimed");
-    private static final IDeathMessage POLAR_BEAR_DEATH = new DeathMessageRandom("respect_habitat", "disturb_den", "chose");
+    private static final IDeathMessage POLAR_BEAR_DEATH = new DeathMessageRandom("respect_habitat", "disturb_den", "chose", "hug");
     private static final IDeathMessage SKELETON_DEATH = new DeathMessageRandom("death_by_arrow", "stando_power", "baseball");
-    private static final IDeathMessage IRON_GOLEM_DEATH = new DeathMessage("saved_from_village", "dad_one", "belt");
-    private static final IDeathMessage DROWNED_DEATH = new DeathMessage("watery_grave", "drown_locker");
-    private static final IDeathMessage CREEPER_DEATH = new DeathMessage("creeper", "al");
+    private static final IDeathMessage IRON_GOLEM_DEATH = new DeathMessage("saved_from_village", "dad_one", "belt", "hug". "cops");
+    private static final IDeathMessage DROWNED_DEATH = new DeathMessage("watery_grave", "drown_locker", "down_with_ship");
+    private static final IDeathMessage CREEPER_DEATH = new DeathMessage("creeper", "al", "box", "hug", "assassinate");
+    private static final IDeathMessage ZOMBIE_DEATH = new DeathMessage("warm_bodies", "brains", "peashooter", "hug", "just_delete");
+    private static final IDeathMessage ENDERMAN_DEATH = new DeathMessage("abducted", "fears", "forgot");
+    private static final IDeathMessage ENDERDRAGON_DEATH = new DeathMessage("honor", "save_the_world");
+    private static final IDeathMessage WITHER_DEATH = new DeathMessage("honor", "save_the_world");
     private static final IDeathMessage GUARDIAN_DEATH = new DeathMessage("stared_down", "drown_locker");
-    private static final IDeathMessage WARDEN_DEATH = new DeathMessage("snake", "dad_two");
+    private static final IDeathMessage WARDEN_DEATH = new DeathMessage("snake", "dad_two", "they_said");
     private static final IDeathMessage PLAYER_DEATH = new DeathMessage("pwned", "butt", "just_delete", "lobby", "eliminated", "assassinate", "executed", "ended", "demise", "slimed");
     private static final IDeathMessage FALL_DEATH = new DeathMessageRandom("fall_bounce", "fall_gravity", "fall_parachute", "fall_stub", "free_fall", "fall_git_gud", "fall_delete_game", "fall_halfway_down", "fall_defy", "life_alert", "hunid_fifty_thousand", "fall_splat", "fall_flip");
     private static final IDeathMessage DROWN_DEATH = new DeathMessageRandom("drown_breath", "drown_fishes", "drown_fish_food", "drown_shark_bait", "drown_floundered", "drown_mario", "down_with_ship");
@@ -145,14 +153,36 @@ public class DeathKnellCommon {
                     return DROWNED_DEATH.getMessage(deadMob, killer);
                 }
 
+                if (killer instanceof Zombie && tryPercent(0.40f)) {
+
+                    return ZOMBIE_DEATH.getMessage(deadMob, killer);
+                }
+
                 if (killer instanceof Skeleton && tryPercent(0.40f)) {
 
                     return SKELETON_DEATH.getMessage(deadMob, killer);
                 }
+                
                 if (killer instanceof Creeper && tryPercent(0.40f)) {
 
                     return CREEPER_DEATH.getMessage(deadMob, killer);
                 }
+                 
+                if (killer instanceof Enderman && tryPercent(0.40f)) {
+
+                    return ENDERMAN_DEATH.getMessage(deadMob, killer);
+                }
+                
+                if (killer instanceof EnderDragon && tryPercent(0.9f)) {
+
+                    return ENDERDRAGON_DEATH.getMessage(deadMob, killer);
+                }
+   
+                if (killer instanceof Wither && tryPercent(0.9f)) {
+
+                    return WITHER_DEATH.getMessage(deadMob, killer);
+                }
+                
                 if (killer instanceof Guardian && tryPercent(0.40f)) {
 
                     return GUARDIAN_DEATH.getMessage(deadMob, killer);
