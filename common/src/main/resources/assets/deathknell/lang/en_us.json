@@ -2,8 +2,11 @@
   "death.fell.accident.water": "%2$s slipped in water",
 
   "message.deathknell.death_by_cookie": "%2$s forced %1$s to eat too many cookies",
-  "message.deathknell.death_by_book": "%2$s gave %1$s a lecture in death",
+  "message.deathknell.diabeetus": "Diabeetus",
+  "message.deathknell.death_by_book": "%2$s lectured %1$s to death",
+  "message.deathknell.death_by_boredom": "%2$s made %1$s so bored they died",
   "message.deathknell.death_by_axe": "%2$s chopped %1$s to pieces",
+  "message.deathknell.johnny": "Herrreeeee's Johnny!",
   "message.deathknell.death_by_stick": "%2$s hit %1$s with a stick so hard they died lmao",
   "message.deathknell.death_by_arrow": "%1$s took an arrow in the knee",
   "message.deathknell.stando_power": "%1$s really thought they would get a stand",
@@ -75,14 +78,29 @@
   "message.deathknell.disturb_den": "%1$s disturbed %2$s's den",
   "message.deathknell.chose": "%1$s chose the %2$s",
   "message.deathknell.saved_from_village": "%2$s saved the village from %1$s",
+  "message.deathknell.cops": "The villagers called the cops on %1$s",
   "message.deathknell.dad_one": "%1$s made Dad mad",
+  "message.deathknell.hug": "%2$s gave %1$s a hug",
   "message.deathknell.belt": "%2$s took %1$s and put belt to ass",
   "message.deathknell.watery_grave": "%2$s sent %1$s to a watery grave",
   "message.deathknell.stared_down": "%1$s was stared down by %2$1",
   "message.deathknell.snake": "%1$s are you ok? %1$s? %1$s?!?!?!?",
+  "message.deathknell.they_said": "Don't worry about the %2$s, they said. The %2$s is friendly, they said. It won't hurt you, they said",
   "message.deathknell.dad_two": "%1$s woke up Dad",
   "message.deathknell.creeper": "Creeper. Aww man",
   "message.deathknell.al": "I'm a Creeper. Minecraft's grim reaper. Blowing up blocks like Al Kai-edah",
+  "message.deathknell.box": "Hey, it's the guy on the box! *Explodes*",
+  "message.deathknell.abducted": "%1$s got abducted",
+  "message.deathknell.fears": "%2$s made %1$s see their worst fears",
+  "message.deathknell.forgot": "%1$s forgot how to fight against an %2$s",
+  "message.deathknell.warm_bodies": "%1$s thought they could date a %2$s",
+  "message.deathknell.brains": "%1$s got their brains eaten",
+  "message.deathknell.peashooter": "%1$s forgot to plant their Peashooters",
+  "message.deathknell.honor": "I'll give you this, at least you died with honor %1$s",
+  "message.deathknell.save_the_world": "%1$s couldn't save the world",
+  
+  
+  
   
 
   "message.deathknell.fall_delete_game": "Bro at this point %1$s, just delete the game",
@@ -98,6 +116,7 @@
   "message.deathknell.fall_halfway_down": "%1$s wishes they could have known about the view from halfway down",
   "message.deathknell.life_alert": "%1$s has fallen, and they can't get up",
   "message.deathknell.hunid_fifty_thousand": "%1$s wants $150,000. But they'll settle out of court right now for $20 bucks",
+  "message.deathknell.trust_fall": "%1$s failed the trust fall",
 
   "message.deathknell.drown_breath": "%1$s couldn't hold their breath",
   "message.deathknell.drown_fishes": "%1$s is sleeping with the fishes",
@@ -115,5 +134,6 @@
   "message.deathknell.void_infinity": "%1$s fell into infinity plus one",
   "message.deathknell.void_divide": "%1$s divided by zero",
   "message.deathknell.void_door": "This is %1$s to Ground Control, I'm stepping through the door",
-  "message.deathknell.void_floating": "...and %1$s is floating in a most peculiar way"
+  "message.deathknell.void_floating": "...and %1$s is floating in a most peculiar way",
+  "message.deathknell.void_noclip": "%1$s no-clipped out of reality (and died)"
 }
