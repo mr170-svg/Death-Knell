@@ -3,6 +3,9 @@
 
   "message.deathknell.death_by_cookie": "%2$s forced %1$s to eat too many cookies",
   "message.deathknell.diabeetus": "Diabeetus",
+  "message.deathknell.fat": "Fatass",
+  "message.deathknell.heartattack": "%1$s got a heart attack from %2$s cookies",
+  "message.deathknell.arnold": "PUT THE COOKIE DOWN!!!",
   "message.deathknell.death_by_book": "%2$s lectured %1$s to death",
   "message.deathknell.death_by_boredom": "%2$s made %1$s so bored they died",
   "message.deathknell.death_by_axe": "%2$s chopped %1$s to pieces",
@@ -98,6 +101,7 @@
   "message.deathknell.peashooter": "%1$s forgot to plant their Peashooters",
   "message.deathknell.honor": "I'll give you this, at least you died with honor %1$s",
   "message.deathknell.save_the_world": "%1$s couldn't save the world",
+  "message.deathknell.xbox": "Mom said it's my turn on the Xbox!",
   
   
   
